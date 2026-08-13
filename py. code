@@ -1,0 +1,107 @@
+# SecureSignal AI - Phishing/Fraud Detector
+# Beginner Python version
+
+import re
+
+# Suspicious words commonly found in scam/phishing messages
+SUSPICIOUS_WORDS = [
+    "urgent",
+    "verify",
+    "verification",
+    "password",
+    "otp",
+    "account blocked",
+    "click here",
+    "login",
+    "winner",
+    "prize",
+    "free",
+    "refund",
+    "bank",
+    "upi",
+    "investment",
+    "crypto",
+    "send money",
+    "limited time"
+]
+
+
+def analyse_message(message):
+    message_lower = message.lower()
+
+    score = 0
+    reasons = []
+
+    # Check suspicious words
+    for word in SUSPICIOUS_WORDS:
+        if word in message_lower:
+            score += 5
+            reasons.append(f"Suspicious keyword found: {word}")
+
+    # Check URLs
+    urls = re.findall(r"https?://\S+|www\.\S+", message_lower)
+
+    if urls:
+        score += 15
+        reasons.append("Message contains a URL")
+
+    # Check for excessive !
+    if message.count("!") >= 3:
+        score += 5
+        reasons.append("Message uses excessive urgency/exclamation marks")
+
+    # Check for OTP request
+    if "otp" in message_lower and (
+        "share" in message_lower or
+        "send" in message_lower or
+        "tell" in message_lower
+    ):
+        score += 25
+        reasons.append("Message appears to request an OTP")
+
+    # Maximum score = 100
+    score = min(score, 100)
+
+    # Determine risk level
+    if score >= 70:
+        risk = "HIGH RISK"
+    elif score >= 40:
+        risk = "MEDIUM RISK"
+    else:
+        risk = "LOW RISK"
+
+    return score, risk, reasons
+
+
+# -----------------------------
+# SecureSignal AI
+# -----------------------------
+
+print("================================")
+print("       SecureSignal AI")
+print("   Detect. Verify. Protect.")
+print("================================")
+
+message = input("\nEnter a message to analyse:\n> ")
+
+score, risk, reasons = analyse_message(message)
+
+print("\n--------- ANALYSIS ---------")
+print("AI Trust/Risk Score:", score, "/ 100")
+print("Risk Level:", risk)
+
+if reasons:
+    print("\nReasons:")
+    for reason in reasons:
+        print("-", reason)
+else:
+    print("\nNo major suspicious patterns detected.")
+
+print("\n----------------------------")
+
+if risk == "HIGH RISK":
+    print("⚠️ Warning: This message may be fraudulent.")
+elif risk == "MEDIUM RISK":
+    print("⚠️ Be careful before clicking links or sharing information.")
+else:
+    print("✅ No major fraud indicators detected.")
