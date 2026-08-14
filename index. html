@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SecureSignal AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">SecureSignal <span>AI</span></div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#scanner">Scanner</a>
+            <a href="#features">Features</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <section id="home" class="hero">
+
+            <div class="hero-content">
+
+                <p class="tag">AI-POWERED CYBERSECURITY</p>
+
+                <h1>
+                    Detect. Verify.<br>
+                    <span>Protect.</span>
+                </h1>
+
+                <p>
+                    SecureSignal AI helps identify phishing,
+                    suspicious URLs and digital fraud using
+                    intelligent security analysis.
+                </p>
+
+                <button onclick="openScanner()">
+                    Start Security Scan
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <section id="scanner" class="scanner">
+
+            <h2>Security Scanner</h2>
+
+            <p>Enter a message or URL to analyse.</p>
+
+            <textarea
+                id="inputData"
+                placeholder="Paste suspicious message or URL here..."
+            ></textarea>
+
+            <button onclick="scanData()">
+                Analyse Now
+            </button>
+
+            <div id="result"></div>
+
+        </section>
+
+
+        <section id="features">
+
+            <h2>Security Features</h2>
+
+            <div class="features">
+
+                <div class="card">
+                    <h3>🔗 URL Scanner</h3>
+                    <p>Identify suspicious and potentially dangerous URLs.</p>
+                </div>
+
+                <div class="card">
+                    <h3>📧 Phishing Detection</h3>
+                    <p>Analyse messages for common phishing indicators.</p>
+                </div>
+
+                <div class="card">
+                    <h3>🔐 Risk Score</h3>
+                    <p>Generate a security risk score from 0 to 100.</p>
+                </div>
+
+                <div class="card">
+                    <h3>🤖 AI Assistant</h3>
+                    <p>Provide security guidance to users.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>© 2026 SecureSignal AI | Detect. Verify. Protect.</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
