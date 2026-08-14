@@ -1,0 +1,19 @@
+CREATE DATABASE securesignal;
+
+USE securesignal;
+
+CREATE TABLE scan_results (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    input_type VARCHAR(50),
+    input_data TEXT,
+    risk_score INTEGER,
+    risk_level VARCHAR(30),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
