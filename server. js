@@ -1,0 +1,40 @@
+const express = require("express");
+
+const app = express();
+
+app.use(express.json());
+
+app.get("/", (req, res) => {
+    res.json({
+        project: "SecureSignal AI",
+        status: "online",
+        message: "Detect. Verify. Protect."
+    });
+});
+
+
+app.post("/api/scan", (req, res) => {
+
+    const { data } = req.body;
+
+    if (!data) {
+        return res.status(400).json({
+            error: "No data provided"
+        });
+    }
+
+    res.json({
+        success: true,
+        message: "Security analysis received",
+        data: data
+    });
+});
+
+
+const PORT = 3000;
+
+app.listen(PORT, () => {
+    console.log(
+        `SecureSignal AI server running on port ${PORT}`
+    );
+});
