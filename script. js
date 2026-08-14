@@ -1,0 +1,81 @@
+function openScanner() {
+    document.getElementById("scanner").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+function scanData() {
+
+    const input = document
+        .getElementById("inputData")
+        .value
+        .trim();
+
+    const result = document.getElementById("result");
+
+    if (input === "") {
+
+        result.innerHTML =
+            "<p>Please enter a message or URL.</p>";
+
+        return;
+    }
+
+
+    let score = 0;
+
+    const suspiciousWords = [
+        "urgent",
+        "verify",
+        "password",
+        "otp",
+        "click here",
+        "account blocked",
+        "winner",
+        "send money"
+    ];
+
+
+    const text = input.toLowerCase();
+
+
+    suspiciousWords.forEach(word => {
+
+        if (text.includes(word)) {
+            score += 10;
+        }
+
+    });
+
+
+    if (
+        text.includes("http://") ||
+        text.includes("www.")
+    ) {
+        score += 15;
+    }
+
+
+    score = Math.min(score, 100);
+
+
+    let risk;
+
+    if (score >= 70) {
+        risk = "HIGH RISK";
+    } else if (score >= 40) {
+        risk = "MEDIUM RISK";
+    } else {
+        risk = "LOW RISK";
+    }
+
+
+    result.innerHTML = `
+        <div class="card">
+            <h3>Security Analysis</h3>
+            <p>Risk Score: ${score}/100</p>
+            <p>Risk Level: ${risk}</p>
+        </div>
+    `;
+}
