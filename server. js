@@ -31,10 +31,3 @@ app.post("/api/scan", (req, res) => {
 });
 
 
-const PORT = 3000;
-
-app.listen(PORT, () => {
-    console.log(
-        `SecureSignal AI server running on port ${PORT}`
-    );
-});
