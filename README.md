@@ -120,7 +120,7 @@ Database
 # 👥 Team
 
 **Team Name:** nexon
-
+**Team Leader:** Theerthan BG
 Developed for the **SEBI Securities Market TechSprint Hackathon**.
 
 ---
